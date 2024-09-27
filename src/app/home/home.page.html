@@ -31,7 +31,7 @@
         sizeSm="6"
         sizeXs="6"
       >
-        <ion-card>
+        <ion-card [routerLink]="['/', 'home', 'gifts', item?.id]">
           <ion-thumbnail>
             <ion-img [src]="item?.cover"></ion-img>
           </ion-thumbnail>

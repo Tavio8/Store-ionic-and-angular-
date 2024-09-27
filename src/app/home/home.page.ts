@@ -23,6 +23,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ApiService } from '../services/api/api.service';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -46,6 +47,7 @@ import { NgFor } from '@angular/common';
     IonLabel,
     IonText,
     IonIcon,
+    RouterLink,
     NgFor,
   ],
 })
