@@ -1,10 +1,53 @@
-
+<ion-header slot="fixed" class="ion-no-border transparent-header" collapse="fade">
+  <ion-toolbar>
+    <ion-button slot="start" mode="md" color="dark" defaultHref="/home">
+    </ion-button>
+    <ion-button slot="end" size="large" color="dark" fill="clear"> 
+      <ion-icon name="bag-handle" color="dark" slot="icon-only"></ion-icon>
+      <div *ngIf="totalItems > 0">
+        <ion-badge>
+          <ion-text> {{totalItems}} </ion-text>
+        </ion-badge>
+      </div>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <ion-header slot="fixed" class="ion-no-border">
-    <ion-toolbar>
-      <ion-button slot="start" mode="md" color="light" >
-        <ion-back-button defaultHref="/home"></ion-back-button>
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>
+  <div [style.backgroundImage]="'url(' + item?.cover + ')'" class="bg">
+    <div class="rating" align="center" color="dark">
+      <ion-icon name="star" color="warning"></ion-icon>
+      <span color="warning">{{ item?.rating }}</span>
+    </div>
+  </div>
+
+  <ion-item>
+    <ion-label>
+      {{ item?.name | uppercase}}
+      <p class="desc">{{item?.description}}</p>
+      <p>
+        <ion-text color="medium">MRP</ion-text>
+        <ion-text color="dark" class="price">
+          <span> {{ item?.price }}</span>
+        </ion-text>
+      </p>
+    </ion-label>
+  </ion-item>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      size="large"
+      expand="block"
+      [strong]="true"
+      [color]="addToBag ? 'success' : 'primary'"
+      (click)="addItem()"
+    >
+      <ion-icon
+        slot="start"
+        [name]="addToBag ? 'bag-handle' : 'bag-handle-outline'"
+      >
+      </ion-icon>
+      <ion-text> {{ addToBag || 'Add to Bag' }} </ion-text>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -3,6 +3,8 @@
     <ion-title> Blank </ion-title>
   </ion-toolbar>
 
+    
+
   <ion-toolbar>
     <ion-searchbar
       debounce="800"
@@ -12,6 +14,14 @@
       (ionInput)="onSearchChange($event)"
     >
     </ion-searchbar>
+    <ion-button slot="end" size="large" color="dark" fill="clear" [routerLink]="['/', 'home', 'cart']"> 
+      <ion-icon name="bag-handle" color="dark" slot="icon-only"></ion-icon>
+      <div *ngIf="totalItems > 0">
+        <ion-badge>
+          <ion-text> {{totalItems}} </ion-text>
+        </ion-badge>
+      </div>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

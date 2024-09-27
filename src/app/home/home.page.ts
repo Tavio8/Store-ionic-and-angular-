@@ -20,10 +20,12 @@ import {
   IonText,
   IonIcon,
   IonSearchbar,
+  IonBadge,
 } from '@ionic/angular/standalone';
 import { ApiService } from '../services/api/api.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -47,20 +49,26 @@ import { RouterLink } from '@angular/router';
     IonLabel,
     IonText,
     IonIcon,
+    IonBadge,
     RouterLink,
     NgFor,
+    NgIf,
   ],
 })
 export class HomePage implements OnInit {
   items: any[] = [];
   allItems: any[] = [];
   query!: string;
+  totalItems = 0;
   private api = inject(ApiService);
+  private cartService = inject(CartService);
 
   ngOnInit() {
     console.log('ngoninit');
     this.getItems();
   }
+
+  // this.cartSub = this.cartService.cart.subscribe({ next: (cart) => { this.totalItems = cart ? cart?.totalItems : 0}})
 
   trackByFn(index: number, item: string) {
     return index;
